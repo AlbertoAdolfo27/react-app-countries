@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main{
+    padding: 40px;
+    min-height: 70vh;
+}
+
+.title{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.fw-bold{
+    font-weight: bold;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.ps{
+    padding-left: 20px;
+}

@@ -1,0 +1,19 @@
+.card{
+    margin: auto auto;
+    width: 95%;
+    background-color: #eff4ff ;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 300ms;
+    margin-bottom: 10px;
+}
+
+.card a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.card p {
+    padding-left: 10px;
+}

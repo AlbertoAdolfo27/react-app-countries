@@ -1,0 +1,25 @@
+.country-name{
+    text-align: center;
+}
+.country-attr>div{
+    margin: auto;
+    width: 800px;
+    margin-bottom: 30px;
+}
+
+.country-attr .fw-bold{
+    padding-bottom: 5px;
+}
+
+.back{
+    display: flex;
+    justify-content: end;
+}
+
+.back button{
+    padding: 5px 10px;
+    background-color: #dddddd;
+    border: 0;
+    cursor: pointer;
+    font-size: inherit;
+}
