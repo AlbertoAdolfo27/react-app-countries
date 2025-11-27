@@ -1,13 +1,27 @@
-.search-input {
+.search-container {
     display: flex;
     margin: auto;
     width: 95%;
-    padding: 10px;
-    border: 1px solid #cccccc;
     margin-bottom: 20px;
-    border-radius: 10px;
 }
 
-.search-input:focus {
+.search-container input {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-right: 0;
+}
+
+.search-container button{
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #eeeeee;
+
+}
+
+.search-container input:focus {
     outline: 0;
 }

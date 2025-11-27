@@ -1,49 +1,64 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import "../assets/styles/CountryDetail.css"
+import BackButton from "../components/BackBotton";
 
-
+type Country = {
+    name: { common: string }
+    cca2: string
+    flags: {
+        png: string
+        alt: string
+    }
+    translations: { por: { common: string } }
+    population: string
+    coatOfArms: { png: string }
+    capital: string
+    subregion: string
+}
 
 export default function CountryDetail() {
     const params = useParams();
     const code = params.code;
-    const [country, setCountry] = useState<any>(null)
+    const [country, setCountry] = useState<Country | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
+    const [error, setError] = useState<String>("")
 
-    async function getCountry() {
-        setLoading(true)
-        await fetch("https://restcountries.com/v3.1/alpha/" + code)
-            .then((res) => {
-                if (res.ok) {
-                    return res.json()
-                } else {
-                    throw new Error("An error occurs");
-                }
-            })
-            .then((data) => {
-                setCountry(data[0])
-            })
-            .catch((error) => {
-                console.error(error)
-            }).finally(() => setLoading(false))
+    const getCountry = async () => {
+        try {
+            setError("")
+            setLoading(true)
+            const res = await fetch("https://restcountries.com/v3.1/alpha/" + code)
+
+            if (!res.ok) {
+                console.log(res)
+                setError("Ocorreu algum erro")
+                return
+            }
+
+            const data: Country[] = await res.json()
+            setCountry(data[0])
+
+        } catch (error) {
+            setError("Ocorreu algum erro")
+            console.error("Error", error)
+        } finally {
+            setLoading(false)
+        }
     }
-
 
     useEffect(() => {
         getCountry()
     }, [])
+
+    if (error.length > 0) return <h2 className="title">Erro: {error}</h2>
 
     if (loading) return <h2 className="title">Carregando...</h2>
 
     if (country) {
         return (
             <>
-
-                <div className="back">
-                    <Link to="/">
-                        <button>Voltar</button>
-                    </Link>
-                </div>
+                <BackButton />
                 <h1 className="title">{country.translations.por.common}</h1>
 
                 <div className="country-attr">
@@ -73,7 +88,12 @@ export default function CountryDetail() {
                 </div>
             </>
         )
-    } else {
-        return <h2 className="title">Nenhum pais encontrado</h2>
     }
+
+    return (
+        <>
+            <BackButton />
+            <h2 className="title">Nenhum pais encontrado</h2>
+        </>
+    )
 }

@@ -1,0 +1,11 @@
+.back{
+    display: flex;
+    justify-content: end;
+}
+
+.back button{
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #eeeeee;
+}
