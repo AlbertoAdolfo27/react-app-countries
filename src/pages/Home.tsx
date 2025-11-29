@@ -84,11 +84,13 @@ export default function Countries() {
                 <h1 className="title">Países</h1>
                 <SearchConteiner searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchCountries={searchCountries} />
 
+                <div className="card-container">
                 {
                     countries.map((country: Country) => {
                         return <CountryCard key={country.cca2} name={country.translations.por.common} flag={country.flags.png} code={country.cca2} />
                     })
                 }
+                </div>
             </>
         )
     }

@@ -72,10 +72,8 @@ export default function CountryDetail() {
                     </div>
                     <div>
                         <p className="fw-bold">Bandeira</p>
-                        <div className="d-flex">
-                            <img src={country.flags.png} alt="Bandeira" width="150px" />
-                            <p className="ps">{country.flags.alt}</p>
-                        </div>
+                        <img src={country.flags.png} alt="Bandeira" width="150px" />
+                        <p className="ps">{country.flags.alt}</p>
                     </div>
                     <div>
                         <p className="fw-bold">Brasao da República</p>
